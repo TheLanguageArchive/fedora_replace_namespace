@@ -28,7 +28,7 @@ oldnamespace = args.oldnamespace[0]
 newnamespace = args.newnamespace[0]
 
 # patterns in the FOXML (inc. DC, CMD, RELS-EXT, etc.) where Fedora namespaces occur.
-# providing enough around the namespace should guarantee safe find/replace in the whole file
+# providing enough context around the namespace should guarantee safe find/replace in the whole file
 patterns = ["PID=\"namespace:",
             "Copied datastream from namespace:",
             "<dc:identifier>namespace:",
