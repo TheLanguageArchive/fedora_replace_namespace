@@ -11,6 +11,6 @@ lat:1839_00_0000_0000_0021_E1E8_A
 lat:1839_00_0000_0000_0017_F9D8_A
 ```
 
-After running this script, the Fedora rebuild script should be used to rebuild the resource index and SLQ db. The Solr index also needs to be rebuilt or updated.
+After running this script, the Fedora rebuild script should be used to rebuild the resource index and SQL db. The Solr index also needs to be rebuilt or updated.
 
 The script assumes Fedora objects with metadata in DC and CMDI as inline XML embedded in the FOXML. Different find/replace patterns may be needed for other metadata in case they include Fedora PIDs.
