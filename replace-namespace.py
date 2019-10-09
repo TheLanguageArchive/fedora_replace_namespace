@@ -86,6 +86,12 @@ try:
                     ff.write(fox)
                     ff.close()
                     LOGGER.info("modified FOXML file: " + fox_path)
+                    # replace namespace in filename
+                    old_ns_in_filename = 'info%3Afedora%2F' + oldnamespace + '%3A'
+                    new_ns_in_filename = 'info%3Afedora%2F' + newnamespace + '%3A'
+                    new_fox_path = fox_path.replace(old_ns_in_filename, new_ns_in_filename)
+                    os.rename(fox_path,new_fox_path)
+                    LOGGER.info("renamed FOXML file: " + new_fox_path)
     pids.close()
 except Exception as ex:
     LOGGER.error(ex)
