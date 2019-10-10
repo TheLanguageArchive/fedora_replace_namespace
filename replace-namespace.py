@@ -12,6 +12,7 @@ import logging
 import os
 import re
 import urllib.parse
+import hashlib
 from argparse import ArgumentParser
 
 parser = ArgumentParser()
@@ -86,12 +87,16 @@ try:
                     ff.write(fox)
                     ff.close()
                     LOGGER.info("modified FOXML file: " + fox_path)
-                    # replace namespace in filename
+                    # replace namespace in filename and move file to new directory based on md5 hash of PID
                     old_ns_in_filename = 'info%3Afedora%2F' + oldnamespace + '%3A'
                     new_ns_in_filename = 'info%3Afedora%2F' + newnamespace + '%3A'
-                    new_fox_path = fox_path.replace(old_ns_in_filename, new_ns_in_filename)
+                    new_filename = file.replace(old_ns_in_filename, new_ns_in_filename)
+                    new_filename_unquote = urllib.parse.unquote(new_filename)
+                    new_filename_md5 = hashlib.md5(new_filename_unquote.encode('utf-8')).hexdigest()
+                    new_root = root[:-2] + new_filename_md5[:2]
+                    new_fox_path = os.path.join(new_root, new_filename)
                     os.rename(fox_path,new_fox_path)
-                    LOGGER.info("renamed FOXML file: " + new_fox_path)
+                    LOGGER.info("renamed and moved FOXML file: " + new_fox_path)
     pids.close()
 except Exception as ex:
     LOGGER.error(ex)
