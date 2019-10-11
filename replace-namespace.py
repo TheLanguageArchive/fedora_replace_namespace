@@ -18,7 +18,7 @@ from argparse import ArgumentParser
 parser = ArgumentParser()
 parser.add_argument("-o", "--objectStore", dest="objectstore", nargs=1, help="the Fedora objectStore directory", required=True)
 parser.add_argument("-p", "--pidfile", dest="pidfile", nargs=1,
-                    help="the file containing the Feora PIDs (one per line) of the FOXML files that need to be modified", required=True)
+                    help="the file containing the Fedora PIDs (one per line) of the FOXML files that need to be modified", required=True)
 parser.add_argument("-on", "--oldnamespace", dest="oldnamespace", nargs=1, help="the old namespace prefix", required=True)
 parser.add_argument("-nn", "--newnamespace", dest="newnamespace", nargs=1, help="the new namespace prefix", required=True)
 args = parser.parse_args()
